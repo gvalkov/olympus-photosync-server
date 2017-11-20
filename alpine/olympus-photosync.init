@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+
+name=$RC_SVCNAME
+command="/root/photosync-venv/bin/python"
+command_args="/root/olympus-photosync-server/sync-server.py -i $IFACE -s $SSID -p $PASSWORD $DESTDIR"
+command_user="root"
+command_background="yes"
+start_stop_daemon_args="--stdout /var/log/$RC_SVCNAME.log --stderr /var/log/$RC_SVCNAME.log -d /root/olympus-photosync-server/"
+pidfile="/run/$RC_SVCNAME/$RC_SVCNAME.pid"
+
+start_pre() {
+    checkpath --directory --owner $command_user:$command_user --mode 0775 /run/$RC_SVCNAME
+    checkpath --file --owner $command_user:$command_user --mode 0775 /var/log/$RC_SVCNAME.log
+}
+
+stop_post() {
+    killall wpa_supplicant || /bin/true
+}
+
+depend() {
+    need net
+}
