@@ -29,4 +29,4 @@ Released under the terms of the `Revised BSD License`_.
 .. |pypi| image:: https://img.shields.io/pypi/v/olympus-photosync.svg?style=flat-square&label=latest%20stable%20version
 
 .. _`Revised BSD License`: https://raw.github.com/gvalkov/olympus-photosync/master/LICENSE
-.. _`olympus-photosync`:  https://github.com/mauriciojost/olympus-photosync
+.. _`olympus-photosync`:  https://github.com/gvalkov/olympus-photosync
